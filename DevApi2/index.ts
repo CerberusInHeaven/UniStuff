@@ -10,7 +10,7 @@ app.use('/alunos', AlunoRoutes)
 
 
 app.get('/', (req, res) =>{
-     res.send('test uwu') }
+     res.send('gestão de carrinhos da hotwheels') }
 )
 
 app.get('/test2', (req, res) =>{
