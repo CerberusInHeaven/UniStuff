@@ -21,6 +21,4 @@ def calcular_chinchilas(numero_inicial, anos):
             chinchilas *= 3
         print(f"{ano}º Ano: {chinchilas} chinchilas")
 
-
-
 calcular_chinchilas(numero_inicial, anos)
