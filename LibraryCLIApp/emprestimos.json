@@ -1,0 +1,50 @@
+[
+  {
+    "membro": {
+      "nome": "cachorrodomalleitor",
+      "endereco": "casa do caralho",
+      "telefone": "53981445566",
+      "numeroMatricula": "3"
+    },
+    "livro": {
+      "titulo": "NÃOPRECISADERAQUENOVO",
+      "autor": "Nathan eu mesmo ",
+      "isbn": "5",
+      "anoPublicacao": 2024
+    },
+    "dataEmprestimo": "2024-06-29T22:02:18.053Z",
+    "dataDevolucao": "2024-06-29T22:03:05.870Z"
+  },
+  {
+    "membro": {
+      "nome": "cachorrodomalleitor",
+      "endereco": "casa do caralho",
+      "telefone": "53981445566",
+      "numeroMatricula": "3"
+    },
+    "livro": {
+      "titulo": "livro4",
+      "autor": "aquelelá",
+      "isbn": "10",
+      "anoPublicacao": 2020
+    },
+    "dataEmprestimo": "2024-06-29T22:04:40.270Z",
+    "dataDevolucao": "2024-06-29T22:04:49.750Z"
+  },
+  {
+    "membro": {
+      "nome": "Marcelinho sangue bom",
+      "endereco": "aquela lá que eu esqueci",
+      "telefone": "123456790",
+      "numeroMatricula": "10"
+    },
+    "livro": {
+      "titulo": "Livro 2",
+      "autor": "Nathan eu mesmo ",
+      "isbn": "5",
+      "anoPublicacao": 2024
+    },
+    "dataEmprestimo": "2024-07-10T20:37:16.854Z",
+    "dataDevolucao": "2024-07-10T20:37:59.493Z"
+  }
+]
