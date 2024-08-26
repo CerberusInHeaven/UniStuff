@@ -1,0 +1,38 @@
+[
+  {
+    "titulo": "livro 1",
+    "autor": "natan 2 ",
+    "isbn": "12345",
+    "anoPublicacao": 10
+  },
+  {
+    "titulo": "Livro 2",
+    "autor": "Nathan eu mesmo ",
+    "isbn": "5",
+    "anoPublicacao": 2024
+  },
+  {
+    "titulo": "livro 3",
+    "autor": "aquelelá",
+    "isbn": "10",
+    "anoPublicacao": 2020
+  },
+  {
+    "titulo": "Teste Título",
+    "autor": "Teste Autor",
+    "isbn": "123456789",
+    "anoPublicacao": 2023
+  },
+  {
+    "titulo": "Edécio adventures 2: eletric boogalo",
+    "autor": "gladirmizinho",
+    "isbn": "70",
+    "anoPublicacao": 2020
+  },
+  {
+    "titulo": "livro de teste para confrimar que estar salvando",
+    "autor": "eu mesmo",
+    "isbn": "1010",
+    "anoPublicacao": 1999
+  }
+]

@@ -1,0 +1,7 @@
+Criar classes para Livro, Membro e Empréstimo.
+Utilizar encapsulamento para proteger os atributos das classes
+Implementar métodos para adicionar, atualizar, remover e listar objetos.
+
+Herança e Polimorfismo:
+Demonstrar o uso de polimorfismo através de métodos que podem ser sobrepostos.
+
