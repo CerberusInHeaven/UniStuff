@@ -62,6 +62,22 @@ END ##
 tabela produto sempre que for feita uma atualização/update na tabela
 itensvenda. */
 
+
+DELIMITER ##
+
+CREATE TRIGGER trg_update_estoque
+AFTER UPDATE ON itensVenda
+FOR EACH ROW
+BEGIN
+    DECLARE diferenca INT;
+    SET diferenca = NEW.qtd_vendida - OLD.qtd_vendida;
+    UPDATE produto
+    SET qtd_estoque = qtd_estoque - diferenca
+    WHERE codigo = NEW.produto_codigo;
+END ##
+
+
+
 /* 2 – Criar uma tabela chamada log.
 Esta tabela deve ter os campos: produto_cod, nomeAnterior, nomeNovo e
 dataHora.
@@ -83,7 +99,9 @@ DELIMITER ##
 CREATE TRIGGER trg_itensModificados_AfterUpdate AFTER UPDATE
 ON produto
 FOR EACH ROW 
-    UPDATE logitem SET nomeNovo = NEW.descricao
-    WHERE produto.descricao = OLD.descricao
+  IF NEW.descricao != OLD.descricao THEN
+        INSERT INTO logitem (produto_cod, nomeAnterior, nomeNovo, DataHora)
+        VALUES (OLD.codigo, OLD.descricao, NEW.descricao, NOW());
+    END IF;
 
 END ##
