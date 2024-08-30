@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `carros` ADD COLUMN `km` MEDIUMINT NOT NULL DEFAULT 0;
