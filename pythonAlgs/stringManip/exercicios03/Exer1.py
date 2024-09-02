@@ -15,7 +15,7 @@ def validar_senha(senha):
     possui_upper = False
     possui_lower = False
     possui_number = False
-
+    
     for letra in senha: 
         if letra.isupper():
             possui_upper = True
