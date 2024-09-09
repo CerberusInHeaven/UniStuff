@@ -1,74 +1,102 @@
-import { Combustiveis, PrismaClient } from "@prisma/client";
-import { Router } from "express";
-import { z } from "zod";
+import { Combustiveis, PrismaClient } from '@prisma/client'
+import { Router } from "express"
+import { z } from "zod"
 
-const router = Router();
+const prisma = new PrismaClient()
+const router = Router()
 
-const prisma = new PrismaClient();
-
-const carro_Schema = z.object({
+const carroSchema = z.object({
   modelo: z.string(),
-  ano: z.number().min(1980, { message: "No mínimo, ano deve ser 1980" }),
-  preco: z.number(),
   marca: z.string(),
+  preco: z.number(),
+  ano: z.number().min(1980,
+    { message: 'No mínimo, ano deve ser 1980' }),
   cor: z.string().optional(),
   combustivel: z.nativeEnum(Combustiveis).optional(),
-  km: z.number().optional(),
-});
+  km: z.number().optional()
+})
 
 router.get("/", async (req, res) => {
-  const carros = await prisma.carro.findMany({});
-  res.status(200).json(carros);
-});
+  const carros = await prisma.carro.findMany({
+    orderBy: { id: 'desc' }
+  })
+  res.status(200).json(carros)
+})
 
 router.post("/", async (req, res) => {
-  const result = carro_Schema.safeParse(req.body);
-  console.log(result);
+
+  const result = carroSchema.safeParse(req.body)
 
   if (!result.success) {
-    res.status(400).json({ error: result.error });
-    return;
+    res.status(400).json({ erro: result.error })
+    return
   }
 
   const carro = await prisma.carro.create({
-    data: result.data,
-  });
-  res.status(201).json(carro);
-});
+    data: result.data
+  })
+  res.status(201).json(carro)
+})
 
 router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params
 
-  const carros = await prisma.carro.delete({
-    where: { id: Number(id) },
-  });
-  res.status(200).json(carros);
-});
+  const carro = await prisma.carro.delete({
+    where: { id: Number(id) }
+  })
+  res.status(200).json(carro)
+})
 
 router.put("/:id", async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params
 
-  const result = carro_Schema.safeParse(req.body);
+  const result = carroSchema.safeParse(req.body)
+
   if (!result.success) {
-    res.status(400).json({ error: result.error });
-    return;
+    res.status(400).json({ erro: result.error })
+    return
   }
 
-  const carros = await prisma.carro.update({
+  const carro = await prisma.carro.update({
     where: { id: Number(id) },
-    data: result.data,
-  });
-  res.status(200).json(carros);
-});
+    data: result.data
+  })
+  res.status(200).json(carro)
+})
+
+router.patch("/:id", async (req, res) => {
+  const { id } = req.params
+
+  const partialCarroSchema = carroSchema.partial()
+
+  const result = partialCarroSchema.safeParse(req.body)
+
+  if (!result.success) {
+    res.status(400).json({ erro: result.error })
+    return
+  }
+
+  const carro = await prisma.carro.update({
+    where: { id: Number(id) },
+    data: result.data
+  })
+  res.status(200).json(carro)
+})
 
 router.get("/pesquisa/:modelo", async (req, res) => {
-  const { modelo } = req.params;
+  const { modelo } = req.params
 
   const carros = await prisma.carro.findMany({
-    orderBy: { id: "desc" },
+    orderBy: { id: 'asc' },
     where: { modelo: { contains: modelo } },
-  });
-  res.status(200).json(carros);
-});
+    select: {
+      modelo: true,
+      preco: true,
+      combustivel: true,
+      id: true,
+    },
+  })
+  res.status(200).json(carros)
+})
 
-export default router;
+export default router

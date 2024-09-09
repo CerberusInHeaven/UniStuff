@@ -10,3 +10,10 @@
 # 10, este é o seu "Ponto". Seu objetivo agora é
 # continuar jogando os dados até tirar este
 # número novamente. Você perde, no entanto, se tirar um 7 antes de tirar este "Ponto" novamente.
+
+
+import math 
+
+print("C R A P S G A M E N I G G U U U U U ")
+
+nome = input("Nome do jogador: ")

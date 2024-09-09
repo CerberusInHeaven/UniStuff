@@ -13,22 +13,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model carro {
-  id        Int      @id @default(autoincrement())
-  modelo    String   @db.VarChar(50)
-  ano       Int      @db.SmallInt
-  preco     Decimal  @db.Decimal(10, 2)
-  cor       String?  @db.VarChar(30)
-  marca     String   @db.VarChar(20)
-  combustivel Combustiveis   @default(FLEX)
-  km        Int       @db.MediumInt @default(0)
-  @@map ("carros")
+model Carro {
+  id          Int      @id @default(autoincrement())
+  modelo      String   @db.VarChar(30)
+  ano         Int      @db.SmallInt
+  preco       Decimal  @db.Decimal(10, 2)
+  cor         String?  @db.VarChar(30)
+  marca       String   @db.VarChar(20)
+  combustivel Combustiveis @default(FLEX)
+  km          Int      @db.MediumInt @default(0)
+  @@map("carros")
 }
 
 enum Combustiveis {
- FLEX 
- GASOLINA 
- ALCOOL
- DIESEL
- ELETRICIDADE
+  FLEX
+  GASOLINA
+  ALCOOL
+  DIESEL
+  ELETRICIDADE
 }
