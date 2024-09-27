@@ -5,8 +5,8 @@ with open("train.csv", mode="r") as arq:
     for linha in dados_csv:
         titanic.append(linha)
 
-print(titanic[0])
-print(titanic[0]['Name'])
+##print(titanic[0])
+##print(titanic[0]['Name'])
 
 
 def titulo(texto):
@@ -42,10 +42,34 @@ def analise_sexo():
     print(f"Mortas: {fem-fem_sobre}")
 
 def top10_idosos():
-    pass
+ idadeanalist = [pessoa for pessoa in titanic if pessoa["Age"] != '' and pessoa["Age"] is not None]
+ idadeanalist.sort(key=lambda y: float(y["Age"]), reverse=True)
 
+ topvelhos = idadeanalist[:10]
+
+ print("Top 10 idosos")
+ for pessoa in topvelhos:
+     print(f"Nome: {pessoa['Name']} || idade: {pessoa['Age']} || classe: {pessoa['Pclass']}")
+     
+        
 def analise_classe():
-    pass
+     
+    classA = 0
+    classB = 0 
+    classC = 0 
+    
+    for cl in titanic:
+     if cl["Pclass"] == "1":
+         classA += 1
+     elif cl["Pclass"] == "2":
+         classB += 1
+     else:
+         classC += 1
+    print("*Analise de passageiros por classe*")
+    print(f"Numero de passageiros da class A: {classA}")
+    print(f"Numero de passageiros da class B: {classB}")
+    print(f"Numero de passageiros da class C: {classC}")
+    print("="*30)
 
 while True: 
     titulo("Passageiros do titanic: Exemplos de analise")
