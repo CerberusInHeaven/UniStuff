@@ -53,6 +53,23 @@ router.post("/", async (req, res) => {
   }
 })
 
+
+##request post 
+
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+  "modelo": "Civic",
+  "marca": "Honda",
+  "ano": 2020,
+  "preco": 95000,
+  "cor": "Preto",
+  "combustivel": "GASOLINA",
+  "km": 20000
+}
+
+
 router.delete("/:id", async (req, res) => {
   const { id } = req.params
 
@@ -65,6 +82,11 @@ router.delete("/:id", async (req, res) => {
     res.status(400).json({ erro: error })
   }
 })
+
+
+##delete info 
+DELETE http://localhost:3000/1
+
 
 router.put("/:id", async (req, res) => {
   const { id } = req.params
@@ -85,6 +107,22 @@ router.put("/:id", async (req, res) => {
     res.status(400).json({ error })
   }
 })
+
+##atualização geral put
+
+PUT http://localhost:3000/1
+Content-Type: application/json
+
+{
+  "modelo": "Corolla",
+  "marca": "Toyota",
+  "ano": 2019,
+  "preco": 88000,
+  "cor": "Branco",
+  "combustivel": "FLEX",
+  "km": 35000
+}
+
 
 // quando quisermos alterar apenas algum/alguns atributo(s)
 router.patch("/:id", async (req, res) => {
@@ -108,6 +146,15 @@ router.patch("/:id", async (req, res) => {
     res.status(400).json({ error })
   }
 })
+#exemplo de patch 
+
+PATCH http://localhost:3000/1
+Content-Type: application/json
+
+{
+  "preco": 87000
+}
+
 
 router.get("/pesquisa/:modelo", async (req, res) => {
   const { modelo } = req.params
@@ -120,6 +167,11 @@ router.get("/pesquisa/:modelo", async (req, res) => {
     res.status(500).json({ erro: error })
   }
 })
+
+
+#buscar por modelo 
+GET http://localhost:3000/pesquisa/Civic
+
 
 
 
