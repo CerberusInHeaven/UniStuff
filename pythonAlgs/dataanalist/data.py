@@ -49,7 +49,7 @@ def top10_idosos():
 
  print("Top 10 idosos")
  for pessoa in topvelhos:
-     print(f"Nome: {pessoa['Name']} || idade: {pessoa['Age']} || classe: {pessoa['Pclass']}")
+     print(f"Nome: {pessoa['Name']} || idade: {pessoa['Age']} || classe: {pessoa['Pclass']} || Survived : {'Sim' if pessoa['Survived'] == '1' else 'Não'}")
      
         
 def analise_classe():

@@ -1,11 +1,11 @@
 # exemplo 1-1-2-2-2
 
 clientes = [ 
-    {"nome": "dracula flow", "idade":   60},
-    {"nome": "paulo kogos", "idade":    31},
-    {"nome": "rafael moreira", "idade":  40},
-    {"nome": "loli vampira", "idade":  10},
-    {"nome": "young thug", "idade":      18},
+    {"nome": "dracula flow", "idade":               60},
+    {"nome": "paulo kogos", "idade":                31},
+    {"nome": "rafael moreira", "idade":             40},
+    {"nome": "loli vampira", "idade":               10},
+    {"nome": "young thug", "idade":                 18},
     {"nome": "blue archive da silva", "idade":      16}
 ]
 
