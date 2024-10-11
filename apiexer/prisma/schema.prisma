@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model maeparto {
+id        Int    @id @default(autoincrement())
+nome      String @db.VarChar(30)
+endereco  String @db.VarChar(255)
+telefone  String @db.VarChar(30)
+birthdate String @db.VarChar(50)
+parto     bebe[]
+ @@map("Maes")
+}
+
+model medico {
+  id            Int @id @default(autoincrement())
+  nome          String @db.VarChar(50)
+  telefone      String @db.VarChar(30)
+  crm           Int @db.MediumInt
+  especialidade String @db.VarChar(50)
+  parto         bebe[]
+  @@map("medicos")
+}
+
+model bebe{
+  id Int          @id @default(autoincrement())
+  nome String     @db.VarChar(50)
+  peso Decimal    @db.Decimal(10, 2)
+  data DateTime   @db.DateTime()
+  mae maeparto    @relation(fields: [maeinfo], references: [id])
+  parteiro medico @relation(fields: [medicoinfo], references: [id])
+  maeinfo Int
+  medicoinfo Int
+  @@map("bebes")
+}
